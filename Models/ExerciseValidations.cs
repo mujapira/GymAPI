@@ -43,6 +43,7 @@ namespace WorkoutAPI.Models.Validations
             "Full Body",
             "Biceps",
             "Triceps",
+            "Forearms",
             "Quads",
             "Hamstrings",
             "Calves",

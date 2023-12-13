@@ -9,8 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddCors(options => options.AddPolicy("CorsPolicy", builder => builder.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()));
-builder.Services.AddDbContext<ExerciseContext>(opt => opt.UseSqlServer
-("Data Source=localhost; Initial Catalog=Developer; User Id=sa; Password=bomBEIRO!@#; TrustServerCertificate=True"));
+builder.Services.AddDbContext<ExerciseContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection")));
 builder.Services.Configure<RouteOptions>(options => { options.LowercaseUrls = true; options.LowercaseQueryStrings = true; });
 
 var app = builder.Build();

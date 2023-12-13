@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using WorkoutAPI.Filters.ActionFilters;
-using WorkoutAPI.Filters.ExceptionFilters;
 using WorkoutAPI.Models;
 using WorkoutAPI.Models.Repositories;
 
@@ -10,47 +8,54 @@ namespace WebWorkoutAPI.controllers
     [Route("api/[controller]")]
     public class ExercisesController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetExercises()
+        private readonly ExerciseRepository _exerciseRepository;
+
+        public ExercisesController(ExerciseContext context)
         {
-            return Ok(ExerciseRepository.GetExercises());
+            _exerciseRepository = new ExerciseRepository(context);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetExercises()
+        {
+            var exercises = await _exerciseRepository.GetExercises();
+            return Ok(exercises);
         }
 
 
         [HttpGet("{id}")]
-        [Exercise_ValidateExerciseIdFilter]
-        public IActionResult GetExercise(int id)
+        public async Task<IActionResult> GetExercise(int id)
         {
-            return Ok(ExerciseRepository.GetExercise(id));
+            var exercise = await _exerciseRepository.GetExercise(id);
+
+            return Ok(exercise);
         }
 
 
         [HttpPost]
-        [Exercise_ValidateExerciseExistenceFilter]
-        public IActionResult CreateExercise([FromBody] Exercise exercise)
+        public async Task<IActionResult> CreateExercise([FromBody] Exercise exercise)
         {
-            ExerciseRepository.AddExercise(exercise);
-            return CreatedAtAction(nameof(GetExercise), new { id = exercise.Id }, exercise);
+            await _exerciseRepository.AddExercise(exercise);
+
+            return Ok();
         }
 
 
         [HttpPut("{id}")]
-        [Exercise_ValidateExerciseIdFilter]
-        [Exercise_ValidateUpdateExerciseFilter]
-        [Exercise_HandleUpdateExceptionsFilter]
-        public IActionResult UpdateExercise(int id, Exercise exercise)
+        public async Task<IActionResult> UpdateExercise(int id, Exercise exercise)
         {
-            ExerciseRepository.UpdateExercise(id, exercise);
+            await _exerciseRepository.UpdateExercise(id, exercise);
+
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        [Exercise_ValidateExerciseIdFilter]
-        public IActionResult DeleteExercise(int id)
+        public async Task<IActionResult> DeleteExercise(int id)
         {
-            var exercise = ExerciseRepository.GetExercise(id);
-            ExerciseRepository.DeleteExercise(id);
-            return Ok(exercise);
+            await _exerciseRepository.DeleteExercise(id);
+
+            return Ok();
         }
     }
 }

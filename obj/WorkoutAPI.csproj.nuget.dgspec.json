@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/mujapira/Projects/dotnet/WorkoutAPI/WorkoutAPI.csproj": {}
+    "C:\\Users\\mauri\\Projects\\GymAPI\\WorkoutAPI.csproj": {}
   },
   "projects": {
-    "/home/mujapira/Projects/dotnet/WorkoutAPI/WorkoutAPI.csproj": {
+    "C:\\Users\\mauri\\Projects\\GymAPI\\WorkoutAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/mujapira/Projects/dotnet/WorkoutAPI/WorkoutAPI.csproj",
+        "projectUniqueName": "C:\\Users\\mauri\\Projects\\GymAPI\\WorkoutAPI.csproj",
         "projectName": "WorkoutAPI",
-        "projectPath": "/home/mujapira/Projects/dotnet/WorkoutAPI/WorkoutAPI.csproj",
-        "packagesPath": "/home/mujapira/.nuget/packages/",
-        "outputPath": "/home/mujapira/Projects/dotnet/WorkoutAPI/obj/",
+        "projectPath": "C:\\Users\\mauri\\Projects\\GymAPI\\WorkoutAPI.csproj",
+        "packagesPath": "C:\\Users\\mauri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mauri\\Projects\\GymAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/mujapira/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mauri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -86,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/mujapira/.dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
